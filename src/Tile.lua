@@ -35,11 +35,11 @@ end
 function Tile:render(x, y)
 	--draw shadow
 	love.graphics.setColor(0.1, 0.1, 0.2, 1)
-	love.love.graphics.draw(gTextures['main'], gFrames['tiles'][self.color][self.variety],
+	love.graphics.draw(gTextures['main'], gFrames['tiles'][self.color][self.variety],
 			self.x + x + 2, self.y + y + 2)
 
 	--draw title itself
 	love.graphics.setColor(1, 1, 1, 1)
-	love.love.graphics.draw(gTextures['main'], gFrames['tiles'][self.color][self.variety],
+	love.graphics.draw(gTextures['main'], gFrames['tiles'][self.color][self.variety],
 			self.x + x, self.y + y)
 end

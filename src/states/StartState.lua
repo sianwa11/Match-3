@@ -128,7 +128,7 @@ end
 function StartState:drawMatch3Text(y)
   --draw semi-transparent rect behind MATCH 3
   love.graphics.setColor(1, 1, 1, 0.5)
-  love.graphics.rectangle('fill', VIRTUAL_HEIGHT / 2 + y)
+  love.graphics.rectangle('fill', VIRTUAL_WIDTH / 2 - 76, VIRTUAL_HEIGHT / 2 + y - 11, 150, 58, 6)
 
   --print MATCH-3 letters in their corresponding current colors
   for i = 1, 6 do
@@ -150,5 +150,36 @@ function StartState:drawOptions(y)
   --draw Start text
   love.graphics.setFont(gFonts['medium'])
   self:drawTextShadow('Start', VIRTUAL_HEIGHT / 2 + y + 8)
-  
+
+  if self.currentMenuItem == 1 then
+    love.graphics.setColor(0.4, 0.6, 1, 1)
+  else
+    love.graphics.setColor(0.2, 0.3, 0.5, 1)
+  end
+
+  love.graphics.printf('Start', 0, VIRTUAL_HEIGHT / 2 + y + 8, VIRTUAL_WIDTH, 'center')
+
+  --draw Quit Game text
+  love.graphics.setFont(gFonts['medium'])
+  self:drawTextShadow('Quit Game', VIRTUAL_HEIGHT / 2 + y + 33)
+
+  if self.currentMenuItem == 2 then
+    love.graphics.setColor(0.4, 0.6, 1, 1)
+  else
+    love.graphics.setColor(0.2, 0.3, 0.5, 1)
+  end
+
+  love.graphics.printf('Quit Game', 0, VIRTUAL_HEIGHT / 2 + y + 33, VIRTUAL_WIDTH, 'center')
+end
+
+--[[
+    Helper function for drawing just text backgrounds; draws several layers of the same text, in
+    black, over top of one another for a thicker shadow.
+]]
+function StartState:drawTextShadow(text, y)
+  love.graphics.setColor(0.1, 0.1, 0.2, 1)
+  love.graphics.printf(text, 2, y + 1, VIRTUAL_WIDTH, 'center')
+  love.graphics.printf(text, 1, y + 1, VIRTUAL_WIDTH, 'center')
+  love.graphics.printf(text, 0, y + 1, VIRTUAL_WIDTH, 'center')
+  love.graphics.printf(text, 1, y + 2, VIRTUAL_WIDTH, 'center')
 end

@@ -23,8 +23,8 @@ function love.load()
   })
 
   -- set music to loop and start
-  -- gSounds['music']:setLooping(true)
-  -- gSounds['music']:play()
+   gSounds['music']:setLooping(true)
+   gSounds['music']:play()
 
   --initialize state machine
   gStateMachine = StateMachine {
@@ -55,9 +55,9 @@ end
 
 function love.keyboard.wasPressed(key)
     if love.keyboard.keysPressed[key] then
-        return true
+      return true
     else
-        return false
+      return false
     end
 end
 
@@ -72,7 +72,7 @@ function love.update(dt)
 
   gStateMachine:update(dt)
 
-  love.keyboard.keypressed = {}
+  love.keyboard.keysPressed = {}
 end
 
 function love.draw()
